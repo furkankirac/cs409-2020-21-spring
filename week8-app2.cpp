@@ -45,12 +45,12 @@ void print(const auto& container)
 }
 
 template<
-    template<typename> typename ContainerTemplate, // ContainerTemplate is a template that expects a single typename
-    typename T
+    template<typename ...> typename ContainerTemplate, // ContainerTemplate is a template that expects a single typename
+    typename ... Ts
     >
-//requires(PushableContainer<ContainerTemplate, T>)
-requires(PushableContainer_v2<ContainerTemplate<T>>)
-[[nodiscard]] auto transform(const ContainerTemplate<T>& container, auto func)
+//requires(PushableContainer<ContainerTemplate, Ts...>)
+requires(PushableContainer_v2<ContainerTemplate<Ts...>>)
+[[nodiscard]] auto transform(const ContainerTemplate<Ts...>& container, auto func)
 {
     using T_new = decltype(func(*container.begin()));
     auto container_new = ContainerTemplate<T_new>{};

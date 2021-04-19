@@ -36,7 +36,7 @@ struct ConditionalType<T_true, T_false, true>
 };
 
 template<typename T_true, typename T_false, bool b>
-using ConditionalType_t = ConditionalType<T_true, T_false, b>::type;
+using ConditionalType_t = typename ConditionalType<T_true, T_false, b>::type;
 
 //using ConditionalType_int_float_true = int;
 //using ConditionalType_int_float_false = float;

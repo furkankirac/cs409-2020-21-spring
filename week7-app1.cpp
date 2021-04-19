@@ -43,10 +43,10 @@ void transform_(auto& container, auto func)
 }
 
 template<
-    template<typename> typename ContainerTemplate, // ContainerTemplate is a template that expects a single typename
-    typename T
+    template<typename...> typename ContainerTemplate, // ContainerTemplate is a template that expects a single typename
+    typename ... Ts
     >
-[[nodiscard]] auto transform(const ContainerTemplate<T>& container, auto func)
+[[nodiscard]] auto transform(const ContainerTemplate<Ts...>& container, auto func)
 {
     using T_new = decltype(func(*container.begin()));
     auto container_new = ContainerTemplate<T_new>{};
