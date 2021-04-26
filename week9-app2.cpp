@@ -12,7 +12,7 @@ void f(Widget&) { std::cout << "1\n"; }
 void f(const Widget&) { std::cout << "2\n"; }
 
 // (3) function with r-value ref
-void f(Widget&&) { std::cout << "3\n"; }
+//void f(Widget&&) { std::cout << "3\n"; }
 
 // (4) function with r-value ref-to-const
 void f(const Widget&&) { std::cout << "4\n"; }
@@ -31,15 +31,15 @@ const Widget getConstWidget() { const Widget w; return w; }
 int main(int argc, char* argv[])
 {
     // what is the preference order of above functions for below questions?
-    //    Widget w1{}; // auto w1 = Widget{};
-    //    f(w1);
+//    Widget w1{}; // auto w1 = Widget{};
+//    f(w1); // 1, 5, 2
 
-    //    const Widget w2{};
-    //    f(w2);
+//    const Widget w2{};
+//    f(w2); // 2, 5
 
-    //    f(getWidget());
+//    f(getWidget()); // 3, 5, 4, 6, 2
 
-    //    f(getConstWidget());
+//    f(getConstWidget()); // 4, 6, 5, 2
 
     return 0;
 }
