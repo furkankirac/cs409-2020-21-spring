@@ -9,6 +9,8 @@
 
 #include <iostream>
 #include <vector>
+#include <utility>
+#include <tuple>
 
 using namespace std;
 
