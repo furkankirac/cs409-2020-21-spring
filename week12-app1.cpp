@@ -16,14 +16,14 @@ template<typename T>            struct enableIf<true, T> { using type = T; };
 
 //// make this accept only integral numbers
 template<typename T>
-enableIf<is_integral_v<T>, void>::type print(T i)
+typename enableIf<is_integral_v<T>, void>::type print(T i)
 {
     cout << "integral value:" << i << endl;
 }
 
 //// make this accept only floating point numbers
 template<typename T>
-enableIf<is_floating_point_v<T>, void>::type print(T f)
+typename enableIf<is_floating_point_v<T>, void>::type print(T f)
 {
     cout << "floating point value:" << f << endl;
 }
