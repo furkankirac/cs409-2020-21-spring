@@ -20,8 +20,8 @@ struct Foo
     Foo() { }
 };
 
-using lambda_noop = decltype([](auto&& a) { return a; });
-void print(string whatever, auto lambda = lambda_noop{})
+//using lambda_noop = decltype([](auto&& a) { return a; });
+void print(string whatever, auto lambda)// = lambda_noop{})
 {
     cout << lambda(whatever) << endl;
 }
@@ -29,15 +29,15 @@ void print(string whatever, auto lambda = lambda_noop{})
 int main()
 {
 //    int k = 10;
-    using lambda_type = decltype([](int i) { return (i+1); });
+//    using lambda_type = decltype([](int i) { return (i+1); });
 
-    auto l = lambda_type();
-    auto l2 = lambda_type();
-    l(10);
-    l(20);
+//    auto l = lambda_type();
+//    auto l2 = lambda_type();
+//    l(10);
+//    l(20);
 
 //    print("Hello World"s, [](auto&& s) { return s + " I'm here"; });
-    print<lambda_noop>("Hello World");
+//    print<lambda_noop>("Hello World");
 
     return 0;
 }

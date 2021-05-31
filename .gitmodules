@@ -1,0 +1,3 @@
+[submodule "cppcoro.git"]
+	path = cppcoro
+	url = https://github.com/lewissbaker/cppcoro.git
