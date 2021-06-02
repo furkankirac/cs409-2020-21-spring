@@ -1,12 +1,8 @@
-// subroutines (1950s) vs coroutines (1960s)
-// f() * 3
-// for loop to print 0, 1, 2
-// for loop to fill a vector, then range for over it to print them
-// use algorithm to fill the vector (iota)
-// use static variable in f()
-// generator class with function call operator overloaded
-// mutable lambdas
+#include "less_macro.hpp"
 
+// subroutines (1950s) vs coroutines (1960s)
+
+#ifdef __clang__
 #include <experimental/coroutine> // gcc users need to include <coroutine> not experimental/...
 #include <iostream>
 #include <thread>
@@ -68,6 +64,7 @@ auto fibonacci() -> cppcoro::generator<const std::uint64_t>
         b += tmp;
     }
 }
+#endif
 
 int main()
 {
@@ -81,6 +78,7 @@ int main()
     // the next co_yield point is reached or the coroutine runs to completion().
     // Any unhandled exceptions thrown by the coroutine will propagate out of the begin() or operator++() calls
     // to the caller.
+#ifdef __clang__
     for (auto i : fibonacci())
     {
         if (i > 1'000'000) break;
@@ -94,4 +92,5 @@ int main()
     auto con = std::async([]{ cppcoro::sync_wait(consumer()); });
     auto prod = std::async(producer);
     con.get(), prod.get();
+#endif
 }
